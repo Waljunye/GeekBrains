@@ -54,10 +54,10 @@ namespace Lesson
             Pause();
             #endregion
             #region Расстояние между точками
-            // Тут по сути просто метод. Значения координат только в double
-            decimal dist = Convert.ToDecimal(getDistance(1.0, 1.0, 2.0, 2.0));
+            // Тут по сути просто метод. 
+            double dist = getDistance(1.0, 1.0, 2.0, 2.0);
 
-            Console.WriteLine($"Расстояние между точками: {dist.ToString("F2")} ");
+            Console.WriteLine("Расстояние между точками: {0:F2} ", dist);
             Pause();
             #endregion
             #region Обмен значений int
