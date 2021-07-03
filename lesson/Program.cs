@@ -62,20 +62,27 @@ namespace Lesson
             #endregion
             #region Обмен значений int
             // Задание без звездочки
-            int a = 1;
-            int b = 2;
+            Console.Write("Введите значение a: ");
+            int a = int.Parse(Console.ReadLine());
+            Console.Write("Введите значение b: ");
+            int b = int.Parse(Console.ReadLine());
             int c = a;
             a = b;
             b = c;
             Console.WriteLine($"a = {a} b = {b}");
+            Console.WriteLine("В данном примере использовались 3 переменные, что не очень.");
 
             // Задание со звездочкой
-            a = 1333;
-            b = 2123;
+            Console.Write("Еще раз введите значение a: ");
+            a = int.Parse(Console.ReadLine());
+            Console.Write("Введите значение b: ");
+            b = int.Parse(Console.ReadLine());
             a = a ^ b;
             b = a ^ b;
             a = a ^ b;
             Console.WriteLine($"a = {a} b = {b}");
+            Console.WriteLine("Тут уже по другому, я использовал исключающее или и с легкостью поменял значения переменных местами тремя операциями");
+            Console.WriteLine("PS: До этой штуки сложно догадаться, но я ее и раньше знал");
 
             Pause();
             #endregion
@@ -131,6 +138,7 @@ namespace Lesson
         {
             Console.WriteLine("Pause. Press any button to continue...");
             Console.ReadKey();
+            Console.WriteLine();
         }
     }
 }
