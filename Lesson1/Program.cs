@@ -35,7 +35,7 @@ namespace Lesson1
                 Complex res;
                 if (o.Re == 0 || o.Im == 0)
                 {
-                    throw new Exception("На ноль делить нельзя!");
+                    throw new ArgumentException("На ноль делить нельзя!");
                 }
                 else
                 {

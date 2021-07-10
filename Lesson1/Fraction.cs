@@ -15,7 +15,7 @@ namespace Lesson1
 				denominator = _denominator;
 			}else
             {
-				throw new Exception("Знаменатель не может быть 0, так как на 0 делить нельзя!");
+				throw new ArgumentException("Знаменатель не может быть равен 0");
             }
 			
 		}
