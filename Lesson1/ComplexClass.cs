@@ -4,64 +4,50 @@ namespace Lesson1
 {
 	public class ComplexClass
 	{
-		private double Re
+		private double ReC
 		{
-			get
-			{
-				return Re;
-			}
-			set
-			{
-				Re = value;
-			}
+            get; set;
 		}
-		private double Im
+		private double ImC
 		{
-			get
-			{
-				return Im;
-			}
-			set
-			{
-				Im = value;
-			}
+            get; set;
 		}
 		public ComplexClass(double Re, double Im)
 		{
-			this.Re = Re;
-			this.Im = Im;
+			ReC = Re;
+			ImC = Im;
 		}
 		public ComplexClass()
         {
-			Re = 0;
-			Im = 0;
+			ReC = 0;
+			ImC = 0;
         }
         public ComplexClass Plus(ComplexClass o)
         {
             ComplexClass res = new ComplexClass();
-            res.Re = Re + o.Re;
-            res.Im = Im + o.Im;
+            res.ReC = ReC + o.ReC;
+            res.ImC = ImC + o.ImC;
             return res;
         }
         public ComplexClass Minus(ComplexClass o)
         {
             ComplexClass res = new ComplexClass();
-            res.Re = Re + o.Re;
-            res.Im = Im + o.Im;
+            res.ReC = ReC + o.ReC;
+            res.ImC = ImC + o.ImC;
 
             return res;
         }
         public ComplexClass Divide(ComplexClass o)
         {
             ComplexClass res = new ComplexClass();
-            if (o.Re == 0 || o.Im == 0)
+            if (o.ReC == 0 || o.ImC == 0)
             {
                 throw new Exception("На ноль делить нельзя!");
             }
             else
             {
-                res.Im = Re / o.Re;
-                res.Im = Im / o.Im;
+                res.ReC = ReC / o.ReC;
+                res.ImC = ImC / o.ImC;
                 return res;
             }
 
@@ -69,10 +55,17 @@ namespace Lesson1
         public ComplexClass Multiply(ComplexClass o)
         {
             ComplexClass res = new ComplexClass();
-            res.Re = Re * o.Re;
-            res.Im = Im * o.Im;
+            res.ReC = ReC * o.ReC;
+            res.ImC = ImC * o.ImC;
 
             return res;
+        }
+
+        public override string ToString()
+        {
+            //((Im != 0)?" + " + Im + "i": " ")
+            return $"{((ReC != 0) ? ReC + ((ImC != 0) ? " + " + ImC + "i" : "") : (ImC != 0) ? ImC + "i" : "0")}";
+            return $"{((ReC != 0) ? ReC + ((ImC != 0) ? " + " + ImC + "i" : "") : (ImC != 0) ? ImC + "i" : "0")}";
         }
 
     }
