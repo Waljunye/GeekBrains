@@ -4,6 +4,46 @@ using System.IO;
 namespace Lesson1
 {
     // Матвей Волков
+    struct Account
+    {
+        private string login;
+        private string password;
+        private int guess;
+
+        public Account(string path, int countOfGuess)
+        {
+            StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + path);
+            login = sr.ReadLine();
+            password = sr.ReadLine();
+            guess = countOfGuess;
+        }
+        
+        public bool Login(string messOnLogin, string messOnPassword)
+        {
+            string inputLogin = "";
+            string inputPassword = "";
+            for(int i = 1; i <= guess; i++)
+            {
+                Console.Write(messOnLogin);
+                inputLogin =  Console.ReadLine();
+                Console.Write(messOnPassword);
+                inputPassword = Console.ReadLine();
+                if(inputLogin == login && inputPassword == password)
+                {
+                    return true;
+                } else if(i != guess)
+                {
+                    Console.WriteLine($"Введен неверный логин или пароль, повторите попытку! (Осталось попыток: {guess - i})");
+                }
+
+            }
+            return false;
+
+
+        }
+
+
+    }
     class ResizableIntClass
     {
         private int[] arr;
@@ -172,7 +212,7 @@ namespace Lesson1
                 }
                 for (int i = 0; i < arr.Length - 1; i++)
                 {
-                    if(arr[i] % 3 == 0 ^ arr[i + 1] % 3 == 0)
+                    if (arr[i] % 3 == 0 ^ arr[i + 1] % 3 == 0)
                     {
                         count++;
                     }
@@ -180,7 +220,7 @@ namespace Lesson1
                 Console.WriteLine($"Количество пар чисел, которые делятся на 3 равно: {count}");
                 Console.ReadKey();
                 Console.WriteLine();
-                
+
             }
             #endregion
             #region  Пары Чисел через класс (Задание 2)
@@ -205,7 +245,11 @@ namespace Lesson1
                 Console.WriteLine("Массив с методом Inverse: ");
                 arr.Inverse().Join("\t");
             }
-             
+
+            #endregion
+            #region Auth
+            Account acc = new Account("Account.txt", 3);
+            Console.WriteLine(acc.Login("Введите логин: \n", "Введите пароль: \n"));
             #endregion
         }
     }

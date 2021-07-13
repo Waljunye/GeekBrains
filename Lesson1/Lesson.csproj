@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="Account.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ArrayList.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
