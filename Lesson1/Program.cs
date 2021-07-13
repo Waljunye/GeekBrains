@@ -3,6 +3,7 @@ using System.IO;
 
 namespace Lesson1
 {
+    // Матвей Волков
     class ResizableIntClass
     {
         private int[] arr;
