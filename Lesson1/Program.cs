@@ -7,9 +7,87 @@ namespace Lesson1
     class ResizableIntClass
     {
         private int[] arr;
+        public int Sum;
         public ResizableIntClass(int[] arr)
         {
             this.arr = arr;
+        }
+        public ResizableIntClass()
+        {
+            arr = new int[0];
+        }
+        public ResizableIntClass(string path)
+        {
+            arr = StaticMassClass.GetFileArray(path);
+        }
+        public ResizableIntClass(int len, int step)
+        {
+            Random ran = new Random();
+            arr = new int[len];
+            for (int i = 0; i < len; i += step)
+            {
+                arr[i] = ran.Next(-100, 100);
+            }
+            Sum = GetSum();
+        }
+        private int GetSum()
+        {
+            int retVal = 0;
+            foreach (int val in arr)
+            {
+                retVal += val;
+            }
+            return retVal;
+        }
+        public ResizableIntClass Inverse()
+        {
+            ResizableIntClass retArr = new ResizableIntClass();
+            foreach (int val in arr)
+            {
+                retArr.Append(-1 * val);
+            }
+            return retArr;
+        }
+        public ResizableIntClass Multi(int coeff)
+        {
+            ResizableIntClass retArr = new ResizableIntClass();
+            foreach (int val in arr)
+            {
+                retArr.Append(coeff * val);
+            }
+            return retArr;
+        }
+        public int MaxCount()
+        {
+            int max = 0;
+            int count = 1;
+            foreach (int val in arr)
+            {
+                if(max < val)
+                {
+                    max = val;
+                    count = 1;
+                }else if (max == val)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public void Join(string sep)
+        {
+            foreach(int val in arr)
+            {
+                Console.Write(val + sep);
+            }
+            Console.WriteLine();
+        }
+        public void Join()
+        {
+            foreach (int val in arr)
+            {
+                Console.WriteLine(val);
+            }
         }
         public void Append(int value)
         {
@@ -17,6 +95,7 @@ namespace Lesson1
             Array.Copy(arr, 0, retArr, 0, arr.Length);
             retArr[arr.Length] = value;
             arr = retArr;
+            Sum = GetSum();
         }
         public int[] toIntArray()
         {
@@ -31,6 +110,7 @@ namespace Lesson1
             set
             {
                 arr[index] = value;
+                Sum = GetSum();
             }
         }
     }
@@ -112,8 +192,21 @@ namespace Lesson1
                 Console.WriteLine();
             }
             #endregion
-            
-
+            #region Задание 3
+            {
+                ResizableIntClass arr = new ResizableIntClass("ArrayList.txt");
+                Console.WriteLine($"Количество максимальных элементов: {arr.MaxCount()}");
+                Console.WriteLine("Метод Multi \nВведите коофицент: ");
+                int coof = int.Parse(Console.ReadLine());
+                Console.WriteLine("Исходный Массив: ");
+                arr.Join("\t");
+                Console.WriteLine("Результат: ");
+                arr.Multi(coof).Join("\t");
+                Console.WriteLine("Массив с методом Inverse: ");
+                arr.Inverse().Join("\t");
+            }
+             
+            #endregion
         }
     }
 }
