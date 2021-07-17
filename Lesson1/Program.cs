@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Lesson1
 {
+    // Волков Матвей
     static class Message
     {
         private static char[] sep = new char[] { ' ', ',', '!', '?', '.' };
@@ -90,7 +91,7 @@ namespace Lesson1
             return false;
         }
     }
-    // Волков Матвей
+    
     class Program
     {
         /// <summary>
